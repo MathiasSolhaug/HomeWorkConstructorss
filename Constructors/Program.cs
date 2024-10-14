@@ -192,12 +192,25 @@ Greet("Анна", "Здравствуйте", 25);
     Age = 10,
     Name = "Foo",
 };*/
-/*BankAccount bankAccount = new BankAccount(100, "joe")
+
+/*Console.WriteLine($"Bankaccount number: ");
+int bankNum = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Bankaccount owner: ");
+string bankOwn = Console.ReadLine();
+
+BankAccount bankAccount = new BankAccount(bankNum, bankOwn)
 {
     Balance = 0
 };
-bankAccount.Deposit(100);
-bankAccount.Withdraw(111);*/
+Console.WriteLine($"Bankaccount number: {bankAccount.AccountNumber}");
+Console.WriteLine($"Bankaccount owner: {bankAccount.Owner}");
+Console.WriteLine($"Balance: {bankAccount.Balance}");
+Console.WriteLine($"Sum of deposit: ");
+double deposit = Convert.ToDouble(Console.ReadLine());
+bankAccount.Deposit(deposit);
+double withdraw = Convert.ToDouble(Console.ReadLine());
+bankAccount.Withdraw(withdraw);*/
+
 /*Homework o = new Homework();
 o.SumArray(1, 2, 3);*/
 
@@ -257,6 +270,7 @@ class Homework
             Console.WriteLine("Sum: " + sum);
             return sum;
         };
+        Local(totalNums);
     }
 }
 
@@ -313,7 +327,16 @@ class Animals
     public string Species;
     public string Name;
     public int Age;
+    public Animals()
+    {
 
+    }
+    public Animals(string Species, string Name,  int Age)
+    {
+        this.Species = Species;
+        this.Name = Name;
+        this.Age = Age;
+    }
 }
 
 class Rectangle
@@ -321,20 +344,16 @@ class Rectangle
     public double Width;
     public double Height;
     public int Color;
-    public Rectangle()
+    public Rectangle() : this(0, 0)
     {
-        this.Width = 0;
-        this.Height = 0;
     }
     public Rectangle(double width, double height)
     {
         this.Width = width;
         this.Height = height;
     }
-    public Rectangle(double width, double height, int color)
+    public Rectangle(double width, double height, int color) : this(width, height)
     {
-        this.Width = width;
-        this.Height = height;
         this.Color = color;
     }
 }
@@ -365,12 +384,10 @@ class Circle
     public Circle()
     {
 
-
     }
     public Circle(double radius)
     {
         this.radius = radius;
-
     }
 }
 
@@ -386,13 +403,11 @@ class BankAccount
     }
     public void Deposit(double balance)
     {
-        this.Balance = balance;
-        Console.WriteLine($"Balance: {this.Balance}");
+        this.Balance += balance;
     }
     public void Withdraw(double amount)
     {
         this.Balance = this.Balance < amount ? this.Balance : this.Balance - amount;
-        Console.WriteLine($"Balance: {this.Balance}");
     }
 
 
